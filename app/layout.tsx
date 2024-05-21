@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import NavBar from "@/components/NavBar";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -11,7 +10,6 @@ export const metadata: Metadata = {
     description: "Zdenek Veverka - Product and graphics design",
     keywords: ["product design", "graphics design", "design", "Zdenek Veverka"],
     robots: "index, follow",
-    themeColor: "#ffffff",
 };
 
 export default function RootLayout({
@@ -29,10 +27,7 @@ export default function RootLayout({
                 <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5" />
                 <meta name="msapplication-TileColor" content="#da532c" />
             </head>
-            <body className={inter.className}>
-                <NavBar />
-                {children}
-            </body>
+            <body className={inter.className}>{children}</body>
         </html>
     );
 }

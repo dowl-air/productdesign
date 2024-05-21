@@ -1,5 +1,6 @@
 "use client";
 import { login } from "@/app/actions/admin.action";
+import Link from "next/link";
 import { redirect } from "next/navigation";
 import { useState } from "react";
 
@@ -43,6 +44,9 @@ const LoginPage = () => {
                     </button>
                 </form>
             </div>
+            <Link href="/" className="link text-black text-lg mt-8">
+                Back to Homepage
+            </Link>
         </main>
     );
 };

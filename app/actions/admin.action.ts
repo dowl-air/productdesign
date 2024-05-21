@@ -1,7 +1,6 @@
 "use server";
 
 import { JWTPayload, jwtVerify, SignJWT } from "jose";
-import { revalidatePath } from "next/cache";
 import { cookies } from "next/headers";
 import { env } from "process";
 
@@ -22,7 +21,6 @@ export const login = async (formData: FormData) => {
 
 export const logout = async () => {
     cookies().delete("session");
-    revalidatePath("/admin", "layout");
     return { message: "success" };
 };
 
@@ -38,6 +36,10 @@ export const encrypt = async (payload: { login: string; password: string }) => {
 };
 
 export const decrypt = async (arg: string) => {
-    const { payload } = await jwtVerify(arg, key, { algorithms: ["HS256"] });
-    return payload;
+    try {
+        const { payload } = await jwtVerify(arg, key, { algorithms: ["HS256"] });
+        return payload;
+    } catch (e) {
+        return { password: null, login: null };
+    }
 };

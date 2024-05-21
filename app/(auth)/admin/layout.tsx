@@ -5,10 +5,10 @@ import { redirect } from "next/navigation";
 const AdminLayout = async ({ children }: { children: ReactNode }) => {
     const bool = await verifyCookie();
     if (!bool) {
-        return redirect("/admin/login");
+        return redirect("/login");
     }
 
-    return { children };
+    return <>{children}</>;
 };
 
 export default AdminLayout;
