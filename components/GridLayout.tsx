@@ -12,7 +12,7 @@ const GridLayout = () => {
         { id: "2", x: 1, y: 0, w: 1, h: 1, url: "https://via.placeholder.com/300", description: "Image 2" },
         { id: "3", x: 2, y: 0, w: 1, h: 1, url: "https://via.placeholder.com/300", description: "Image 3" },
         { id: "4", x: 3, y: 0, w: 1, h: 1, url: "https://via.placeholder.com/300", description: "Image 4" },
-        { id: "5", x: 0, y: 1, w: 2, h: 2, url: "https://via.placeholder.com/600", description: "Image 5" },
+        { id: "5", x: 0, y: 1, w: 2, h: 2, url: "https://via.placeholder.com/600", description: "" },
     ];
 
     return (
@@ -37,12 +37,19 @@ const GridLayout = () => {
             verticalCompact={false}
         >
             {images.map((image) => (
-                <div className="relative" key={image.id} data-grid={{ x: image.x, y: image.y, w: image.w, h: image.h }}>
+                <div className="group relative" key={image.id} data-grid={{ x: image.x, y: image.y, w: image.w, h: image.h }}>
                     {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img src={image.url} alt={image.description} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
-                    <div className="absolute bottom-0 w-full bg-black backdrop-blur-sm bg-opacity-50 flex justify-center py-6 px-6">
-                        {image.description}
-                    </div>
+                    <img
+                        src={image.url}
+                        alt={image.description}
+                        style={{ width: "100%", height: "100%", objectFit: "cover" }}
+                        className="hover:scale-110"
+                    />
+                    {image.description && (
+                        <div className="absolute opacity-0 bottom-0 w-full bg-black backdrop-blur-sm bg-opacity-50 justify-center py-6 px-6 group-hover:opacity-100 transition-opacity">
+                            {image.description}
+                        </div>
+                    )}
                 </div>
             ))}
         </ReactGridLayout>
