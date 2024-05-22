@@ -9,7 +9,7 @@ export const getItems = async (): Promise<LayoutImage[]> => {
     return items;
 };
 
-export const addItem = async (item: LayoutImage, file: File): Promise<void> => {
+export const addItem = async (item: Omit<LayoutImage, "url">, file: File): Promise<void> => {
     const docRef = await addDoc(collection(db, "items"), item);
     const url = await uploadImageToFirestore(file, docRef.id);
     await updateDoc(docRef, { url });

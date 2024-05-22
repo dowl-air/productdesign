@@ -2,21 +2,34 @@
 
 import { LayoutImage } from "@/types/LayoutImage";
 import AdminGridLayout from "./AdminGridlayout";
-import { FormEvent, useState } from "react";
+import { FormEvent, useEffect, useState } from "react";
 import { v4 } from "uuid";
 import { addItem, deleteItem, updateItem } from "@/app/actions/items.action";
+import revalidateItems from "@/app/actions/revalidate";
 
 type LayoutImageWithFile = LayoutImage & { file?: File };
 
 export const ImagesChanger = ({ loadedImages }: { loadedImages: LayoutImage[] }) => {
     const [images, setImages] = useState<LayoutImageWithFile[]>(loadedImages);
     const [isUploading, setIsUploading] = useState(false);
+    const [messages, setMessages] = useState<string[]>([]);
+
+    useEffect(() => {
+        const t = setTimeout(() => {
+            setMessages([]);
+        }, 4000);
+
+        return () => {
+            clearTimeout(t);
+        };
+    }, [messages]);
 
     const saveLayout = async () => {
         setIsUploading(true);
+        setMessages((prevMessages) => [...prevMessages, "Saving layout..."]);
         for (const image of images) {
             if (image.file) {
-                const { file, ...rest } = image;
+                const { file, url, ...rest } = image;
                 await addItem(rest, file);
             } else {
                 await updateItem(image);
@@ -30,12 +43,15 @@ export const ImagesChanger = ({ loadedImages }: { loadedImages: LayoutImage[] })
             await deleteItem(id);
         }
         setIsUploading(false);
+        setMessages((prevMessages) => [...prevMessages, "Layout saved succesfully."]);
+        revalidateItems();
     };
 
     const uploadImage = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         const formData = new FormData(e.currentTarget);
         const file = formData.get("file") as File;
+        if (!file.size) return setMessages((prevMessages) => [...prevMessages, "File input is empty."]);
 
         const reader = new FileReader();
         reader.onload = () => {
@@ -75,10 +91,12 @@ export const ImagesChanger = ({ loadedImages }: { loadedImages: LayoutImage[] })
                 return image;
             })
         );
+        setMessages((prevMessages) => [...prevMessages, "Item updated."]);
     };
 
     const removeImage = (id: string) => {
         setImages((prevImages) => prevImages.filter((image) => image.id !== id));
+        setMessages((prevMessages) => [...prevMessages, "Item removed."]);
     };
 
     return (
@@ -167,6 +185,14 @@ export const ImagesChanger = ({ loadedImages }: { loadedImages: LayoutImage[] })
                     <>Save Layout</>
                 )}
             </button>
+
+            <div className="toast">
+                {messages.map((message, i) => (
+                    <div key={i} className="alert alert-info">
+                        <span>{message}</span>
+                    </div>
+                ))}
+            </div>
         </div>
     );
 };
