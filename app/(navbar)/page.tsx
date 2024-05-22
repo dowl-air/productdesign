@@ -1,6 +1,8 @@
 import GridLayout from "@/components/GridLayout";
 import { getItems } from "../actions/items.action";
 import Link from "next/link";
+import { sendMail } from "../actions/email.action";
+import ContactForm from "@/components/ContactForm";
 
 export default async function Home() {
     const items = await getItems();
@@ -32,26 +34,7 @@ export default async function Home() {
                         <p className="py-6">Pošlete nám zprávu.</p>
                     </div>
                     <div className="card shrink-0 w-full max-w-sm shadow-2xl">
-                        <form className="card-body">
-                            <div className="form-control">
-                                <input type="email" placeholder="Kontaktní email" className="input input-bordered bg-white" required />
-                            </div>
-                            <div className="form-control">
-                                <input type="text" placeholder="Předmět" className="input input-bordered bg-white" required />
-                            </div>
-                            <div className="form-control">
-                                <textarea placeholder="Zpráva" className="input input-bordered bg-white h-32 py-2 resize-none scroll-" required />
-                            </div>
-                            <div className="form-control">
-                                <label className="label cursor-pointer flex gap-1">
-                                    <input type="checkbox" required className="checkbox checkbox-primary" />
-                                    <span className="label-text text-nowrap flex flex-col">Souhlasím se zpracováním osobních údajů. </span>
-                                </label>
-                            </div>
-                            <div className="form-control mt-5">
-                                <button className="btn btn-primary">Odeslat</button>
-                            </div>
-                        </form>
+                        <ContactForm />
                     </div>
                 </div>
             </div>

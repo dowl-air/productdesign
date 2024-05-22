@@ -37,7 +37,7 @@ const GridLayout = ({ items }: { items: LayoutImage[] }) => {
                         className="hover:scale-110"
                     />
                     {image.description && (
-                        <div className="absolute opacity-0 bottom-0 w-full bg-black backdrop-blur-sm bg-opacity-50 justify-center py-6 px-6 group-hover:opacity-100 transition-opacity">
+                        <div className="absolute opacity-0 bottom-0 w-full bg-black text-white backdrop-blur-sm bg-opacity-50 justify-center py-6 px-6 group-hover:opacity-100 transition-opacity">
                             {image.description}
                         </div>
                     )}
