@@ -1,10 +1,13 @@
 import GridLayout from "@/components/GridLayout";
+import { getItems } from "../actions/items.action";
 
-export default function Home() {
+export default async function Home() {
+    const items = await getItems();
+
     return (
         <main className="flex min-h-screen flex-col items-center justify-between bg-gray-400">
             <div className="max-w-7xl w-full mx-auto">
-                <GridLayout />
+                <GridLayout items={items} />
             </div>
         </main>
     );

@@ -3,9 +3,34 @@
 import { LayoutImage } from "@/types/LayoutImage";
 import AdminGridLayout from "./AdminGridlayout";
 import { FormEvent, useState } from "react";
+import { v4 } from "uuid";
+import { addItem, deleteItem, updateItem } from "@/app/actions/items.action";
+
+type LayoutImageWithFile = LayoutImage & { file?: File };
 
 export const ImagesChanger = ({ loadedImages }: { loadedImages: LayoutImage[] }) => {
-    const [images, setImages] = useState<LayoutImage[]>(loadedImages);
+    const [images, setImages] = useState<LayoutImageWithFile[]>(loadedImages);
+    const [isUploading, setIsUploading] = useState(false);
+
+    const saveLayout = async () => {
+        setIsUploading(true);
+        for (const image of images) {
+            if (image.file) {
+                const { file, ...rest } = image;
+                await addItem(rest, file);
+            } else {
+                await updateItem(image);
+            }
+        }
+        // remove images that were deleted
+        const loadedIds = loadedImages.map((img) => img.id);
+        const currentIds = images.map((img) => img.id);
+        const deletedIds = loadedIds.filter((id) => !currentIds.includes(id));
+        for (const id of deletedIds) {
+            await deleteItem(id);
+        }
+        setIsUploading(false);
+    };
 
     const uploadImage = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
@@ -17,13 +42,14 @@ export const ImagesChanger = ({ loadedImages }: { loadedImages: LayoutImage[] })
             setImages((prevImages) => [
                 ...prevImages,
                 {
-                    id: Math.random().toString(12).substr(2, 9),
+                    id: v4(),
                     x: 0,
                     y: images.reduce((acc, img) => (img.y > acc ? img.y : acc), 0) + 1,
                     w: 1,
                     h: 1,
                     url: reader.result as string,
                     description: "",
+                    file,
                 },
             ]);
         };
@@ -131,7 +157,16 @@ export const ImagesChanger = ({ loadedImages }: { loadedImages: LayoutImage[] })
             <div className="w-[640px] mx-auto">
                 <AdminGridLayout images={images} />
             </div>
-            <button className="btn btn-primary btn-wide mt-5 mb-20">Save Layout</button>
+            <button className="btn btn-primary btn-wide mt-5 mb-20" onClick={() => saveLayout()}>
+                {isUploading ? (
+                    <>
+                        <span className="loading loading-spinner"></span>
+                        Updating
+                    </>
+                ) : (
+                    <>Save Layout</>
+                )}
+            </button>
         </div>
     );
 };

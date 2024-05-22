@@ -5,20 +5,11 @@ import ReactGridLayout from "react-grid-layout";
 import "react-grid-layout/css/styles.css";
 import "react-resizable/css/styles.css";
 
-const GridLayout = () => {
-    //todo change
-    const images: LayoutImage[] = [
-        { id: "1", x: 0, y: 0, w: 1, h: 1, url: "https://via.placeholder.com/300", description: "Image 1" },
-        { id: "2", x: 1, y: 0, w: 1, h: 1, url: "https://via.placeholder.com/300", description: "Image 2" },
-        { id: "3", x: 2, y: 0, w: 1, h: 1, url: "https://via.placeholder.com/300", description: "Image 3" },
-        { id: "4", x: 3, y: 0, w: 1, h: 1, url: "https://via.placeholder.com/300", description: "Image 4" },
-        { id: "5", x: 0, y: 1, w: 2, h: 2, url: "https://via.placeholder.com/600", description: "" },
-    ];
-
+const GridLayout = ({ items }: { items: LayoutImage[] }) => {
     return (
         <ReactGridLayout
             className="layout"
-            layout={images.map((img, index) => ({
+            layout={items.map((img) => ({
                 i: img.id,
                 x: img.x,
                 y: img.y,
@@ -36,7 +27,7 @@ const GridLayout = () => {
             useCSSTransforms={false}
             verticalCompact={false}
         >
-            {images.map((image) => (
+            {items.map((image) => (
                 <div className="group relative" key={image.id} data-grid={{ x: image.x, y: image.y, w: image.w, h: image.h }}>
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
