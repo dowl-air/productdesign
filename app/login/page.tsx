@@ -18,9 +18,9 @@ const LoginPage = () => {
     };
 
     return (
-        <main className="flex min-h-screen flex-col items-center justify-center bg-gray-400">
-            <div className="card bg-neutral px-20 py-24 rounded-2xl">
-                <h1 className="font-bold text-2xl mb-5">Admin - Sign In</h1>
+        <main className="flex min-h-screen flex-col items-center justify-center bg-base-200">
+            <div className="card bg-base-100 shadow-2xl px-20 py-24 rounded-2xl">
+                <h1 className="font-bold text-2xl mb-5">Sign In</h1>
                 <form className="flex flex-col gap-2" action={loginHandler}>
                     <label className="input input-bordered flex items-center gap-2">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" className="w-4 h-4 opacity-70">

@@ -7,10 +7,14 @@ const NavBar = () => {
                 <nav className="w-full sm:w-[50%] text-nowrap text-lg md:text-xl xl:text-2xl">
                     <ul className="flex justify-center gap-5 sm:gap-24">
                         <li>
-                            <Link href="/#about">O NÁS</Link>
+                            <Link href="/#about" className="text-white">
+                                O NÁS
+                            </Link>
                         </li>
                         <li>
-                            <Link href="/#contact">KONTAKT</Link>
+                            <Link href="/#contact" className="text-white">
+                                KONTAKT
+                            </Link>
                         </li>
                     </ul>
                 </nav>
