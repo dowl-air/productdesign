@@ -1,0 +1,5 @@
+env:
+  - variable: ADMIN_LOGIN
+    secret: ADMIN_LOGIN
+  - variable: ADMIN_PASSWORD
+    secret: ADMIN_PASSWORD
