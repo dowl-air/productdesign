@@ -1,7 +1,6 @@
 import GridLayout from "@/components/GridLayout";
 import { getItems } from "../actions/items.action";
 import Link from "next/link";
-import { sendMail } from "../actions/email.action";
 import ContactForm from "@/components/ContactForm";
 
 export default async function Home() {
@@ -13,42 +12,44 @@ export default async function Home() {
                 <GridLayout items={items} />
             </div>
 
-            <div className="hero bg-base-200 py-32 mt-20" id="about">
-                <div className="hero-content">
-                    <div className="max-w-md flex flex-col sm:flex-row gap-8 items-center">
-                        <h1 className="text-5xl font-bold text-nowrap ">O nás</h1>
-                        <div className="py-6 [&>p]:text-nowrap text-xl">
-                            <p>Navrhujeme tvary domácích spotřebičů.</p>
-                            <p>We design the shapes of appliances.</p>
-                            <p>Some other text about the company.</p>
-                            <p>And some other text about the company.</p>
+            <div className="hero bg-[#96A7B1] text-white max-w-7xl mx-auto" id="about">
+                <div
+                    className="w-full py-32"
+                    style={{ backgroundImage: "url('./logo.svg')", backgroundPosition: "center", backgroundRepeat: "no-repeat" }}
+                >
+                    <div className="w-full ">
+                        <div className="flex flex-col lg:flex-row gap-8 items-center flex-1">
+                            <h1 className="flex flex-1 justify-center items-center text-6xl sm:text-7xl lg:text-8xl text-nowrap ">ABOUT US</h1>
+                            <div className="flex flex-col justify-center items-center py-6 [&>p]:text-nowrap sm:text-xl flex-1">
+                                <p>Navrhujeme tvary domácích spotřebičů.</p>
+                                <p>We design the shapes of appliances.</p>
+                                <p>Some other text about the company.</p>
+                                <p>And some other text about the company.</p>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div className="hero py-32" id="contact">
-                <div className="hero-content gap-8 flex-col lg:flex-row-reverse">
-                    <div className="text-center lg:text-left">
-                        <h1 className="text-5xl font-bold text-nowrap">Napište nám</h1>
-                        <p className="py-6">Pošlete nám zprávu.</p>
-                    </div>
-                    <div className="card shrink-0 w-full max-w-sm shadow-2xl">
+            <div className="hero bg-[#98A27F] text-white max-w-7xl mx-auto" id="about">
+                <div className="flex flex-col w-full lg:flex-row gap-8 items-center">
+                    <h1 className="flex flex-1 justify-center items-center text-6xl sm:text-7xl lg:text-8xl text-nowrap pt-32 lg:pt-0">CONTACT</h1>
+                    <div className="flex flex-col items-start py-6 [&>p]:text-nowrap sm:text-xl flex-1">
                         <ContactForm />
                     </div>
                 </div>
             </div>
 
-            <footer className="footer bg-base-200 text-center py-14 w-full px-12">
-                <div className="w-full mx-auto max-w-7xl flex justify-between">
+            <footer className="footer bg-base-200 text-center py-14 w-full px-12 max-w-7xl mx-auto">
+                <div className="w-full flex flex-col sm:flex-row items-center justify-between gap-5">
                     <div className="flex flex-col sm:flex-row gap-2 sm:gap-5">
-                        <Link href="/#about" className="link">
-                            O nás
+                        <Link href="/#about" className="link text-nowrap">
+                            About us
                         </Link>
-                        <Link href="/#contact" className="link">
-                            Kontakt
+                        <Link href="/#contact" className="link text-nowrap">
+                            Contact
                         </Link>
-                        <Link href="/gdpr" className="link">
+                        <Link href="/gdpr" className="link text-nowrap">
                             Zásady ochrany osobních údajů
                         </Link>
                     </div>

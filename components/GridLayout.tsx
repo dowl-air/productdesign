@@ -26,6 +26,7 @@ const GridLayout = ({ items }: { items: LayoutImage[] }) => {
             margin={[0, 0]}
             useCSSTransforms={false}
             verticalCompact={false}
+            autoSize
         >
             {items.map((image) => (
                 <div className="group relative" key={image.id} data-grid={{ x: image.x, y: image.y, w: image.w, h: image.h }}>

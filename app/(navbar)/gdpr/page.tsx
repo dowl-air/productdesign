@@ -63,8 +63,7 @@ const GDPRPage = () => {
 
                 <h2>Kontakt</h2>
                 <p>Máte-li jakékoli dotazy týkající se ochrany osobních údajů nebo chcete-li uplatnit svá práva, kontaktujte nás na:</p>
-                <p>Email: privacy@yourdomain.cz</p>
-                <p>Adresa: Vaše společnost, Ulice, Město, PSČ</p>
+                <p>Email: kontakt@productdesign.cz</p>
 
                 <p>Datum účinnosti: 1. května 2024</p>
             </div>

@@ -13,25 +13,42 @@ export default function ContactForm() {
     };
 
     return (
-        <form className="card-body" onSubmit={onSubmit}>
+        <form className="card-body gap-1" onSubmit={onSubmit}>
             <div className="form-control">
-                <input type="email" name="email" placeholder="Kontaktní email" className="input input-bordered bg-white" required />
+                <input
+                    type="email"
+                    name="email"
+                    placeholder="YOUR EMAIL"
+                    className="input w-[500px] max-w-[80vw] bg-transparent border-2 focus:border-white focus:outline-none border-white placeholder:text-white"
+                    required
+                />
             </div>
             <div className="form-control">
-                <input type="text" name="subject" placeholder="Předmět" className="input input-bordered bg-white" required />
+                <input
+                    type="text"
+                    name="subject"
+                    placeholder="OBJECT"
+                    className="input w-[500px] max-w-[80vw] bg-transparent border-2 focus:border-white focus:outline-none border-white placeholder:text-white"
+                    required
+                />
             </div>
             <div className="form-control">
-                <textarea placeholder="Zpráva" name="message" className="input input-bordered bg-white h-32 py-2 resize-none scroll-" required />
+                <textarea
+                    placeholder="MESSAGE"
+                    name="message"
+                    className="input w-[500px] max-w-[80vw] bg-transparent border-2 border-white focus:border-white focus:outline-none placeholder:text-white h-32 py-2 resize-none scroll-auto"
+                    required
+                />
             </div>
             <div className="form-control">
-                <label className="label cursor-pointer flex gap-1">
-                    <input type="checkbox" name="gdpr" className="checkbox checkbox-primary" />
-                    <span className="label-text text-nowrap flex flex-col">Souhlasím se zpracováním osobních údajů. </span>
+                <label className="label cursor-pointer gap-2 justify-start">
+                    <input type="checkbox" name="gdpr" className="checkbox border-white border-2" />
+                    <span className="label-text text-white flex flex-col">I agree to the processing of personal data.</span>
                 </label>
             </div>
             <div className="form-control mt-5">
-                <button type="submit" className="btn btn-primary">
-                    Odeslat
+                <button type="submit" className="btn bg-[#70785E] text-white">
+                    SEND
                 </button>
             </div>
         </form>
