@@ -31,7 +31,7 @@ export default async function Home() {
                 </div>
             </div>
 
-            <div className="hero bg-[#98A27F] text-white max-w-7xl mx-auto" id="about">
+            <div className="hero bg-[#98A27F] text-white max-w-7xl mx-auto" id="contact">
                 <div className="flex flex-col w-full lg:flex-row gap-8 items-center">
                     <h1 className="flex flex-1 justify-center items-center text-6xl sm:text-7xl lg:text-8xl text-nowrap pt-32 lg:pt-0">CONTACT</h1>
                     <div className="flex flex-col items-start py-6 [&>p]:text-nowrap sm:text-xl flex-1">
