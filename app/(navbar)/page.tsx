@@ -13,10 +13,7 @@ export default async function Home() {
             </div>
 
             <div className="hero bg-[#96A7B1] text-white max-w-7xl mx-auto" id="about">
-                <div
-                    className="w-full py-32"
-                    style={{ backgroundImage: "url('./logo.svg')", backgroundPosition: "center", backgroundRepeat: "no-repeat" }}
-                >
+                <div className="w-full py-32">
                     <div className="w-full ">
                         <div className="flex flex-col lg:flex-row gap-8 items-center flex-1">
                             <h1 className="flex flex-1 justify-center items-center text-6xl sm:text-7xl lg:text-8xl text-nowrap ">ABOUT US</h1>
@@ -53,7 +50,7 @@ export default async function Home() {
                             Zásady ochrany osobních údajů
                         </Link>
                     </div>
-                    <p>© 2012 - {new Date().getFullYear()} productdesign.cz</p>
+                    <p>© {new Date().getFullYear()} productdesign.cz</p>
                 </div>
             </footer>
         </main>
