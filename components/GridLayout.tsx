@@ -28,18 +28,20 @@ const GridLayout = ({ items }: { items: LayoutImage[] }) => {
             verticalCompact={false}
             autoSize
         >
-            {items.map((image) => (
-                <div className="group relative" key={image.id} data-grid={{ x: image.x, y: image.y, w: image.w, h: image.h }}>
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img
-                        src={image.url}
-                        alt={image.description}
-                        style={{ width: "100%", height: "100%", objectFit: "cover" }}
-                        className="hover:scale-110"
-                    />
-                    {image.description && (
-                        <div className="absolute opacity-0 bottom-0 w-full bg-black text-white backdrop-blur-sm bg-opacity-50 justify-center py-6 px-6 group-hover:opacity-100 transition-opacity">
-                            {image.description}
+            {items.map((media) => (
+                <div className="group relative" key={media.id} data-grid={{ x: media.x, y: media.y, w: media.w, h: media.h }}>
+                    {media.type === "video" ? (
+                        <video src={media.url} controls style={{ width: "100%", height: "100%", objectFit: "cover" }} autoPlay />
+                    ) : (
+                        <img src={media.url} alt={media.description} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+                    )}
+                    {media.description && (
+                        <div
+                            className={`absolute opacity-0 ${
+                                media.type === "video" ? "top-0" : "bottom-0"
+                            } w-full bg-black text-white backdrop-blur-sm bg-opacity-50 justify-center py-6 px-6 group-hover:opacity-100 transition-opacity`}
+                        >
+                            {media.description}
                         </div>
                     )}
                 </div>

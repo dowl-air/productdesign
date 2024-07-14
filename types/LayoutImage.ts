@@ -6,4 +6,5 @@ export type LayoutImage = {
     h: number;
     url: string;
     description: string;
+    type?: string;
 };

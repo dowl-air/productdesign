@@ -30,7 +30,11 @@ const AdminGridLayout = ({ images }: { images: LayoutImage[] }) => {
             {images.map((image) => (
                 <div className="relative" key={image.id} data-grid={{ x: image.x, y: image.y, w: image.w, h: image.h }}>
                     {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img src={image.url} alt={image.description} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+                    {image.type === "video" ? (
+                        <video src={image.url} controls style={{ width: "100%", height: "100%", objectFit: "cover" }}></video>
+                    ) : (
+                        <img src={image.url} alt={image.description} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+                    )}
                 </div>
             ))}
         </ReactGridLayout>

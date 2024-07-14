@@ -6,6 +6,7 @@ import { FormEvent, useEffect, useState } from "react";
 import { v4 } from "uuid";
 import { addItem, deleteItem, updateItem } from "@/app/actions/items.action";
 import revalidateItems from "@/app/actions/revalidate";
+import { checkFileType } from "@/utils/file";
 
 type LayoutImageWithFile = LayoutImage & { file?: File };
 
@@ -52,6 +53,8 @@ export const ImagesChanger = ({ loadedImages }: { loadedImages: LayoutImage[] })
         const formData = new FormData(e.currentTarget);
         const file = formData.get("file") as File;
         if (!file.size) return setMessages((prevMessages) => [...prevMessages, "File input is empty."]);
+        const fileType = checkFileType(file);
+        if (!fileType) return setMessages((prevMessages) => [...prevMessages, "File type not allowed."]);
 
         const reader = new FileReader();
         reader.onload = () => {
@@ -66,6 +69,7 @@ export const ImagesChanger = ({ loadedImages }: { loadedImages: LayoutImage[] })
                     url: reader.result as string,
                     description: "",
                     file,
+                    type: fileType,
                 },
             ]);
         };
@@ -113,10 +117,15 @@ export const ImagesChanger = ({ loadedImages }: { loadedImages: LayoutImage[] })
             <div className="flex flex-col gap-4">
                 {images.map((image) => {
                     return (
-                        <form key={image.id} className="flex gap-2 items-center" onSubmit={updateImage}>
+                        <form key={image.id} className="flex gap-2 items-center justify-end" onSubmit={updateImage}>
                             <input type="hidden" name="id" value={image.id} />
                             {/*eslint-disable-next-line @next/next/no-img-element */}
-                            <img src={image.url} alt={image.description} className="w-20 h-20 object-cover rounded-md" />
+                            {image.type === "video" ? (
+                                <video src={image.url} className="w-56 h-36 object-cover rounded-md" controls />
+                            ) : (
+                                <img src={image.url} alt={image.description} className="w-56 h-36 object-cover rounded-md" />
+                            )}
+
                             <div className="relative">
                                 <div className="label p-0 pb-1 pl-1 absolute -top-[17px]">
                                     <span className="label-text-alt">X</span>
