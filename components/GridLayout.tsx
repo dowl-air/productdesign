@@ -4,6 +4,7 @@ import ReactGridLayout from "react-grid-layout";
 
 import "react-grid-layout/css/styles.css";
 import "react-resizable/css/styles.css";
+import AutoPlayVideo from "./AutoPlayVideo";
 
 const GridLayout = ({ items }: { items: LayoutImage[] }) => {
     return (
@@ -31,7 +32,7 @@ const GridLayout = ({ items }: { items: LayoutImage[] }) => {
             {items.map((media) => (
                 <div className="group relative" key={media.id} data-grid={{ x: media.x, y: media.y, w: media.w, h: media.h }}>
                     {media.type === "video" ? (
-                        <video src={media.url} controls style={{ width: "100%", height: "100%", objectFit: "cover" }} autoPlay />
+                        <AutoPlayVideo src={media.url} />
                     ) : (
                         <img src={media.url} alt={media.description} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
                     )}
