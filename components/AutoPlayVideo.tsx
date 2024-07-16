@@ -32,7 +32,7 @@ const AutoPlayVideo = ({ src }: { src: string }) => {
         };
     }, []);
 
-    return <video ref={videoRef} src={src} controls muted style={{ width: "100%", height: "100%", objectFit: "cover" }}></video>;
+    return <video ref={videoRef} src={src} loop muted style={{ width: "100%", height: "100%", objectFit: "cover" }}></video>;
 };
 
 export default AutoPlayVideo;
