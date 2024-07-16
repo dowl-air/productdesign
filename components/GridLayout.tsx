@@ -38,9 +38,7 @@ const GridLayout = ({ items }: { items: LayoutImage[] }) => {
                     )}
                     {media.description && (
                         <div
-                            className={`absolute opacity-0 ${
-                                media.type === "video" ? "top-0" : "bottom-0"
-                            } w-full bg-black text-white backdrop-blur-sm bg-opacity-50 justify-center py-6 px-6 group-hover:opacity-100 transition-opacity`}
+                            className={`absolute opacity-0 bottom-0 w-full bg-black text-white backdrop-blur-sm bg-opacity-50 justify-center py-6 px-6 group-hover:opacity-100 transition-opacity`}
                         >
                             {media.description}
                         </div>
