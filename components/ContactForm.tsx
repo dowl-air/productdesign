@@ -19,7 +19,7 @@ export default function ContactForm() {
                     type="email"
                     name="email"
                     placeholder="YOUR EMAIL"
-                    className="input w-[500px] max-w-[80vw] bg-transparent border-2 focus:border-white focus:outline-none border-white placeholder:text-white"
+                    className="input max-w-[80vw] bg-transparent border-2 focus:border-white focus:outline-none border-white placeholder:text-white"
                     required
                 />
             </div>
@@ -28,7 +28,7 @@ export default function ContactForm() {
                     type="text"
                     name="subject"
                     placeholder="OBJECT"
-                    className="input w-[500px] max-w-[80vw] bg-transparent border-2 focus:border-white focus:outline-none border-white placeholder:text-white"
+                    className="input max-w-[80vw] bg-transparent border-2 focus:border-white focus:outline-none border-white placeholder:text-white"
                     required
                 />
             </div>
@@ -36,7 +36,7 @@ export default function ContactForm() {
                 <textarea
                     placeholder="MESSAGE"
                     name="message"
-                    className="input w-[500px] max-w-[80vw] bg-transparent border-2 border-white focus:border-white focus:outline-none placeholder:text-white h-32 py-2 resize-none scroll-auto"
+                    className="input max-w-[80vw] bg-transparent border-2 border-white focus:border-white focus:outline-none placeholder:text-white h-32 py-2 resize-none scroll-auto"
                     required
                 />
             </div>
