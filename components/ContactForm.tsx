@@ -13,7 +13,7 @@ export default function ContactForm() {
     };
 
     return (
-        <form className="card-body gap-1" onSubmit={onSubmit}>
+        <form className="card-body gap-1 lg:pl-0 lg:w-full" onSubmit={onSubmit}>
             <div className="form-control">
                 <input
                     type="email"
