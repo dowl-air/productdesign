@@ -1,6 +1,11 @@
+import { useTranslations } from "next-intl";
 import Link from "next/link";
+import LocaleSwitcher from "./LocaleSwitcher";
+import { cookies } from "next/headers";
 
 const NavBar = () => {
+    const t = useTranslations("navbar");
+    const locale = cookies().get("user-locale")?.value;
     return (
         <div className="fixed w-full mt-3 z-10">
             <div className="max-w-7xl mx-auto flex flex-col items-end relative">
@@ -11,16 +16,19 @@ const NavBar = () => {
                     </div>
                 </div>
                 <nav className="w-full sm:w-[50%] text-nowrap sm:text-lg md:text-xl z-10">
-                    <ul className="flex justify-end sm:justify-center gap-3 sm:gap-24 ml-10 -mt-1">
+                    <ul className="flex justify-end gap-3 sm:gap-24 ml-10 -mt-1 sm:mr-10">
                         <li>
                             <Link href="/#about" className="text-white">
-                                ABOUT US
+                                {t("aboutUs")}
                             </Link>
                         </li>
                         <li>
                             <Link href="/#contact" className="text-white">
-                                CONTACT
+                                {t("contact")}
                             </Link>
+                        </li>
+                        <li>
+                            <LocaleSwitcher initLocale={locale} />
                         </li>
                     </ul>
                 </nav>
