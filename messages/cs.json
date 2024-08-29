@@ -1,19 +1,19 @@
 {
     "navbar": {
-        "contact": "KONTAKT",
-        "aboutUs": "O NÁS"
+        "contact": "CONTACT",
+        "aboutUs": "ABOUT US"
     },
     "homepage": {
-        "contact": "KONTAKT",
-        "aboutUs": "O NÁS",
+        "contact": "CONTACT",
+        "aboutUs": "ABOUT US",
         "aboutUsText": "Studio PRODUCTDESIGN se specializuje na produktový design se zaměřením na domácí spotřebiče, spotřební elektroniku a dopravní prostředky. Díky našim dlouholetým zkušenostem a znalostem jsme schopni vytvářet inovativní a vyrobitelná řešení. Během naší existence jsme navázali spolupráci s více než 50 společnostmi v České republice i v zahraničí. Naše práce je viditelná v široké škále produktů, například od domácích spotřebičů značky ETA a.s., přes bojlery DZD Dražice, až po modely lokomotiv 753.6 a 744.0 od společnosti CZ Loko. Naším cílem je vždy dosáhnout propojení estetiky, funkčnosti a vyrobitelnosti. Věříme, že kvalitní design má potenciál zlepšit každodenní život a přinést skutečnou hodnotu jak uživatelům, tak výrobcům. ",
-        "gdpr": "Zásady ochrany osobních údajů",
+        "gdpr": "Privacy Policy",
         "form": {
-            "send": "ODESLAT",
-            "email": "VÁŠ EMAIL",
-            "object": "PŘEDMĚT",
-            "message": "ZPRÁVA",
-            "agreeText": "Souhlasím se zpracováním osobních údajů"
+            "send": "SEND",
+            "email": "YOUR EMAIL",
+            "object": "OBJECT",
+            "message": "MESSAGE",
+            "agreeText": "I agree to the processing of personal data"
         }
     }
 }

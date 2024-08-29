@@ -15,13 +15,13 @@ export default function ContactForm() {
     };
 
     return (
-        <form className="card-body gap-1 lg:pl-0 lg:w-full" onSubmit={onSubmit}>
+        <form className="card-body gap-1 lg:p-0 lg:pr-6 lg:w-full" onSubmit={onSubmit}>
             <div className="form-control">
                 <input
                     type="email"
                     name="email"
                     placeholder={t("form.email")}
-                    className="input max-w-[80vw] bg-transparent border-2 focus:border-white focus:outline-none border-white placeholder:text-white"
+                    className="input max-w-[80vw] max-h-8 text-sm bg-transparent border-2 focus:border-white focus:outline-none border-white placeholder:text-white"
                     required
                 />
             </div>
@@ -30,7 +30,7 @@ export default function ContactForm() {
                     type="text"
                     name="subject"
                     placeholder={t("form.object")}
-                    className="input max-w-[80vw] bg-transparent border-2 focus:border-white focus:outline-none border-white placeholder:text-white"
+                    className="input max-w-[80vw] max-h-8 text-sm bg-transparent border-2 focus:border-white focus:outline-none border-white placeholder:text-white"
                     required
                 />
             </div>
@@ -38,7 +38,7 @@ export default function ContactForm() {
                 <textarea
                     placeholder={t("form.message")}
                     name="message"
-                    className="input max-w-[80vw] bg-transparent border-2 border-white focus:border-white focus:outline-none placeholder:text-white h-32 py-2 resize-none scroll-auto"
+                    className="input max-w-[80vw] max-h-10 text-sm bg-transparent border-2 border-white focus:border-white focus:outline-none placeholder:text-white py-2 resize-none overflow-auto"
                     required
                 />
             </div>
@@ -48,8 +48,8 @@ export default function ContactForm() {
                     <span className="label-text text-white flex flex-col">{t("form.agreeText")}</span>
                 </label>
             </div>
-            <div className="form-control mt-5">
-                <button type="submit" className="btn bg-[#70785E] text-white">
+            <div className="form-control max-h-7">
+                <button type="submit" className="btn max-h-8 min-h-8 bg-[#70785E] text-white">
                     {t("form.send")}
                 </button>
             </div>

@@ -1,11 +1,8 @@
 import { useTranslations } from "next-intl";
 import Link from "next/link";
-import LocaleSwitcher from "./LocaleSwitcher";
-import { cookies } from "next/headers";
 
 const NavBar = () => {
     const t = useTranslations("navbar");
-    const locale = cookies().get("user-locale")?.value;
     return (
         <div className="fixed w-full mt-3 z-10">
             <div className="max-w-7xl mx-auto flex flex-col items-end relative">
@@ -26,9 +23,6 @@ const NavBar = () => {
                             <Link href="/#contact" className="text-white">
                                 {t("contact")}
                             </Link>
-                        </li>
-                        <li>
-                            <LocaleSwitcher initLocale={locale} />
                         </li>
                     </ul>
                 </nav>
