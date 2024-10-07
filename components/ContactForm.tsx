@@ -2,16 +2,20 @@
 
 import { sendMail } from "@/app/actions/email.action";
 import { useTranslations } from "next-intl";
-import { FormEvent } from "react";
+import { FormEvent, useState } from "react";
 
 export default function ContactForm() {
     const t = useTranslations("homepage");
+    const [isSending, setIsSending] = useState(false);
+
     const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
+        setIsSending(true);
         const target = e.currentTarget;
         const formData = new FormData(target);
         await sendMail(formData);
         target.reset();
+        setIsSending(false);
     };
 
     return (
@@ -50,7 +54,7 @@ export default function ContactForm() {
             </div>
             <div className="form-control max-h-7">
                 <button type="submit" className="btn max-h-8 min-h-8 bg-[#70785E] text-white">
-                    {t("form.send")}
+                    {!isSending ? t("form.send") : <span className="loading loading-spinner loading-sm"></span>}
                 </button>
             </div>
         </form>
