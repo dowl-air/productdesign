@@ -15,8 +15,7 @@ export const sendMail = async (formData: FormData): Promise<void> => {
     const from = env.EMAIL_FROM;
 
     var transport = nodemailer.createTransport({
-        service: "gmail",
-        host: "smtp.gmail.com",
+        host: "smtp.seznam.cz",
         port: 465,
         secure: true,
         auth: {
