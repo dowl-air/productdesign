@@ -14,7 +14,7 @@ export const sendMail = async (formData: FormData): Promise<void> => {
     const to = env.EMAIL_TO;
     const from = env.EMAIL_FROM;
 
-    var transport = nodemailer.createTransport({
+    var transport = await nodemailer.createTransport({
         host: "smtp.seznam.cz",
         port: 465,
         secure: true,
@@ -24,7 +24,7 @@ export const sendMail = async (formData: FormData): Promise<void> => {
         },
     });
 
-    transport.sendMail({
+    await transport.sendMail({
         from,
         to,
         subject: "[productdesign.cz] " + subject,
