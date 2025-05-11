@@ -7,7 +7,7 @@ import { getLocale, getMessages } from "next-intl/server";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-    title: "Product Design",
+    title: "PRODUCTDESIGN",
     authors: [{ name: "Daniel Pátek" }],
     description: "Zdenek Veverka - Product and graphics design",
     keywords: ["product design", "graphics design", "design", "Zdenek Veverka"],
