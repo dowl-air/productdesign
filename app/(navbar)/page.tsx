@@ -18,7 +18,7 @@ const Home = async () => {
                 <GridLayout items={items} />
             </div>
 
-            <div className="hero bg-[#96A7B1] text-white max-w-7xl mx-auto lg:h-[220px]" id="about">
+            <div className="hero bg-[#96A7B1] text-white max-w-7xl mx-auto lg:min-h-[220px]" id="about">
                 <div className="w-full">
                     <div className="w-full">
                         <div className="flex flex-col lg:flex-row gap-8 items-center flex-1">
